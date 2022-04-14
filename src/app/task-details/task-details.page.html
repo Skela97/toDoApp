@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Task details</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-fab-button size="small" color="tertiary" (click)="onSave()">
+        <ion-icon name="pencil"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center" *ngIf="isLoading">
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
+
+<ion-card *ngIf="!isLoading" class="ion-padding" style="padding: 0px;">
+  <!--<img src="https://cdn1.vectorstock.com/i/1000x1000/14/45/success-motivational-quotes-vector-23471445.jpg">-->
+  <ion-card-content style="padding: 0px;">
+    <ion-card-header style="padding: 10px;">
+      <ion-title>{{task.subject}}</ion-title>
+    </ion-card-header>
+    <ion-item lines="none">
+      <ion-label style="padding-right: 5px;">Task:</ion-label>
+      <ion-input type="text" placeholder="{{task.task}}"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label style="flex: none;">Date:</ion-label>
+      <ion-datetime display-format="DD.MM.YYYY" value = {{task.date}} placeholder="Select date"></ion-datetime>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-button (click)="onDelete()" expand="block" fill="clear" shape="round">
+  Delete
+</ion-button>
+</ion-content>
